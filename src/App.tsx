@@ -12,9 +12,8 @@ function App() {
       <h1>Home Page</h1>
 
       <Routes>
-        <Route path='/' element={<Photos />}>
-          <Route path='cart' element={<Cart />} />
-        </Route>
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/' element={<Photos />} />
       </Routes>
     </div>
   );
