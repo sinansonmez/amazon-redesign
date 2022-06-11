@@ -4,7 +4,7 @@ import { Context } from "../Context";
 
 const Photos = () => {
     const { photos } = useContext(Context)
-    const photosElement = photos.map((photo, index) => (<Image key={photo.id} img={photo} className={index.toString()} />))
+    const photosElement = photos.map((photo, index) => (<Image key={photo.id} img={photo} />))
     return (
         <main className="photos" >
             {photosElement}

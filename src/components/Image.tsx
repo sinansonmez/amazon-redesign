@@ -1,15 +1,30 @@
 import React from "react";
+import { useState } from "react";
+import { FaHeart, FaPlus } from "react-icons/fa";
 import { PhotosType } from "../Context";
 
 type ImageType = {
-  className: string,
   img: PhotosType
 }
 
-const Image = ({ className, img }: ImageType) => {
+const Image = ({ img }: ImageType) => {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <div className={`${className} image-container`}>
-      <img src={img.url} className={'image-grid'} />
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={`wide image-container`}>
+      <img
+        src={img.url}
+        alt={img.id}
+        className={'image-grid'} />
+      {hovered && (
+        <>
+          <FaHeart className="favorite" />
+          <FaPlus className="cart" />
+        </>
+      )}
     </div>
   )
 }
