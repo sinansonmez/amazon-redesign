@@ -8,7 +8,7 @@ import Photos from './pages/Photos';
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <h1>Home Page</h1>
 
       <Routes>

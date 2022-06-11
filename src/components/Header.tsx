@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Photos from '../pages/Photos';
+import PhotosType from '../pages/Photos';
 import { FaBeer } from 'react-icons/fa';
 
 const Header = () => {
