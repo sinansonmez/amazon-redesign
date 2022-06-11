@@ -3,8 +3,14 @@ import Image from "../components/Image";
 import { Context } from "../Context";
 
 const Photos = () => {
-    const { photos } = useContext(Context)
-    const photosElement = photos.map((photo, index) => (<Image key={photo.id} img={photo} />))
+    const { photos, toggleFavorite } = useContext(Context)
+    const photosElement = photos.map(photo => (
+        <Image
+            key={photo.id}
+            img={photo}
+            toggleFavorite={toggleFavorite}
+        />))
+
     return (
         <main className="photos" >
             {photosElement}

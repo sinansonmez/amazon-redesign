@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-const Context = React.createContext<{ photos: PhotosType[] }>({ photos: [] });
+const Context = React.createContext<ContextType>({ photos: [], toggleFavorite: () => { } });
 
 const API_URL = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
+
+type ContextType = {
+  photos: PhotosType[]
+  toggleFavorite: (id: string) => void
+}
 
 export type PhotosType = {
   id: string,
@@ -13,6 +18,16 @@ export type PhotosType = {
 const ContextProvider = (props: any) => {
   const [photos, setPhotos] = useState<PhotosType[]>([])
 
+  const toggleFavorite = (id: string) => {
+    const updatedPhotos = photos.map(photo => {
+      if (photo.id === id) {
+        return { ...photo, isFavorite: !photo.isFavorite }
+      }
+      return photo
+    })
+    setPhotos(updatedPhotos)
+  }
+
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
@@ -20,7 +35,7 @@ const ContextProvider = (props: any) => {
   }, [])
 
   return (
-    <Context.Provider value={{ photos }} >
+    <Context.Provider value={{ photos, toggleFavorite }} >
       {props.children}
     </Context.Provider>
   )
