@@ -4,7 +4,9 @@ const Context = React.createContext<ContextType>({
     photos: [], 
     toggleFavorite: () => { }, 
     cartItems: [],
-    updateCart: () => { } });
+    updateCart: () => { },
+    clearCart: () => { },
+  });
 
 const API_URL = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
 
@@ -12,7 +14,8 @@ type ContextType = {
   photos: PhotosType[],
   toggleFavorite: (id: string) => void,
   cartItems: PhotosType[],
-  updateCart: (image: PhotosType) => void
+  updateCart: (image: PhotosType) => void,
+  clearCart: () => void
 }
 
 export type PhotosType = {
@@ -44,6 +47,8 @@ const ContextProvider = (props: any) => {
     }
   }
 
+  const clearCart = () => setCartItems([])
+
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
@@ -51,7 +56,7 @@ const ContextProvider = (props: any) => {
   }, [])
 
   return (
-    <Context.Provider value={{ photos, toggleFavorite, cartItems, updateCart }} >
+    <Context.Provider value={{ photos, toggleFavorite, cartItems, updateCart, clearCart }} >
       {props.children}
     </Context.Provider>
   )
