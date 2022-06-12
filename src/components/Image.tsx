@@ -21,7 +21,7 @@ const Image = ({ img, toggleFavorite, inCart, updateCart }: ImageType) => {
   return (
     <div
       className={`wide image-container`}
-      ref={ref}
+      ref={ref as any}
     >
       <img
         src={img.url}
