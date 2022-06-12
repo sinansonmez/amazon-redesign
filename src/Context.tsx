@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 
-const Context = React.createContext<ContextType>({ photos: [], toggleFavorite: () => { } });
+const Context = React.createContext<ContextType>({ 
+    photos: [], 
+    toggleFavorite: () => { }, 
+    cartItems: [],
+    updateCart: () => { } });
 
 const API_URL = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
 
 type ContextType = {
-  photos: PhotosType[]
-  toggleFavorite: (id: string) => void
+  photos: PhotosType[],
+  toggleFavorite: (id: string) => void,
+  cartItems: PhotosType[],
+  updateCart: (image: PhotosType) => void
 }
 
 export type PhotosType = {
@@ -17,6 +23,7 @@ export type PhotosType = {
 
 const ContextProvider = (props: any) => {
   const [photos, setPhotos] = useState<PhotosType[]>([])
+  const [cartItems, setCartItems] = useState<PhotosType[]>([])
 
   const toggleFavorite = (id: string) => {
     const updatedPhotos = photos.map(photo => {
@@ -28,6 +35,15 @@ const ContextProvider = (props: any) => {
     setPhotos(updatedPhotos)
   }
 
+  const updateCart = (image: PhotosType) => {
+    const foundItem = cartItems.find(item => item.id === image.id)
+    if (!foundItem) {
+        setCartItems([...cartItems, image])
+    }
+  }
+
+  console.log('updated cart', cartItems)
+
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
@@ -35,7 +51,7 @@ const ContextProvider = (props: any) => {
   }, [])
 
   return (
-    <Context.Provider value={{ photos, toggleFavorite }} >
+    <Context.Provider value={{ photos, toggleFavorite, cartItems, updateCart }} >
       {props.children}
     </Context.Provider>
   )
