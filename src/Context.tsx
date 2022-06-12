@@ -44,8 +44,6 @@ const ContextProvider = (props: any) => {
     }
   }
 
-  console.log('updated cart', cartItems)
-
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
