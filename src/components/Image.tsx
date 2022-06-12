@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import { FaHeart, FaPlus } from "react-icons/fa";
 import { PhotosType } from "../Context";
+import useHover from "../hooks/useHover";
 
 type ImageType = {
   img: PhotosType,
@@ -11,18 +11,18 @@ type ImageType = {
 }
 
 const Image = ({ img, toggleFavorite, inCart, updateCart }: ImageType) => {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, ref] = useHover()
   const heartIcon = (hovered || img.isFavorite) && <FaHeart
     className="favorite"
     onClick={() => toggleFavorite(img.id)}
   />
-  const plusIcon = (hovered || inCart) && <FaPlus className="cart" onClick={() => updateCart(img) }  />
+  const plusIcon = (hovered || inCart) && <FaPlus className="cart" onClick={() => updateCart(img)} />
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`wide image-container`}>
+      className={`wide image-container`}
+      ref={ref}
+    >
       <img
         src={img.url}
         alt={img.id}
