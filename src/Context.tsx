@@ -38,7 +38,9 @@ const ContextProvider = (props: any) => {
   const updateCart = (image: PhotosType) => {
     const foundItem = cartItems.find(item => item.id === image.id)
     if (!foundItem) {
-        setCartItems([...cartItems, image])
+      setCartItems([...cartItems, image])
+    } else {
+      setCartItems(prevItems => prevItems.filter(item => item.id !== image.id))
     }
   }
 
