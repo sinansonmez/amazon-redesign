@@ -11,7 +11,7 @@ type ImageType = {
 }
 
 const Image = ({ img, toggleFavorite, inCart, updateCart }: ImageType) => {
-  const [hovered, ref] = useHover()
+  const [hovered, ref] = useHover<HTMLDivElement>()
   const heartIcon = (hovered || img.isFavorite) && <FaHeart
     className="favorite"
     onClick={() => toggleFavorite(img.id)}
@@ -21,7 +21,7 @@ const Image = ({ img, toggleFavorite, inCart, updateCart }: ImageType) => {
   return (
     <div
       className={`wide image-container`}
-      ref={ref as any}
+      ref={ref}
     >
       <img
         src={img.url}

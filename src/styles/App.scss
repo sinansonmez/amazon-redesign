@@ -1,9 +1,4 @@
-$primary-color: #FF9900;
-$secondary-color: #FFB700;
-$alternative-color: #00A8E1;
-$text-color: #141B24;
-$background-color: #EEF3F9;
-$font-stack: Roboto, sans-serif;
+@use './var';
 
 :root {
   --black: #150605;
@@ -127,9 +122,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $text-color;
-  color: $background-color;
-  padding: 0 10px;
+  background-color: var.$text-color;
+  color: var.$background-color;
+  padding: 14px 28px;
   -webkit-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
   -moz-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
   box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
@@ -142,3 +137,9 @@ a {
 a:visited { color: var(--light-blue); }
 a:hover { color: var(--light-blue); }
 a:active { color: var(--light-blue); }
+
+.rounded-avatar-small {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
