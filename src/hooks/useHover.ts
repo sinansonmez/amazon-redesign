@@ -1,27 +1,24 @@
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useEffect, RefObject } from "react";
 
-const useHover = () => {
-  const [hovered, setHovered] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+const useHover = <T>(): [boolean, RefObject<T>] => {
+  const [hovered, setHovered] = useState(false);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
-    ref.current?.addEventListener('mouseenter', enter)
-    ref.current?.addEventListener('mouseleave', leave)
+    (ref.current as any)?.addEventListener("mouseenter", enter);
+    (ref.current as any)?.addEventListener("mouseleave", leave);
 
     // clears the event component will unmount
     return () => {
-      ref.current?.removeEventListener('mouseenter', enter)
-      ref.current?.removeEventListener('mouseleave', leave)
-    }
+      (ref.current as any)?.removeEventListener("mouseenter", enter);
+      (ref.current as any)?.removeEventListener("mouseleave", leave);
+    };
+  }, []);
 
-  }, [])
-  
+  const enter = () => setHovered(true);
+  const leave = () => setHovered(false);
 
- const enter = () => setHovered(true)
- const leave = () => setHovered(false)
+  return [hovered, ref];
+};
 
- return [hovered, ref]
-
-}
-
-export default useHover
+export default useHover;
