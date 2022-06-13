@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon/CartIcon";
 import Menu from "./DropdownMenu/Menu";
+import SearchBox from "./SearchBox/SearchBox";
 
 const Header = () => {
   return (
@@ -13,6 +14,7 @@ const Header = () => {
         />
       </Link>
       <Menu />
+      <SearchBox/>
       <img
         alt="avatar"
         className="rounded-avatar-small"
