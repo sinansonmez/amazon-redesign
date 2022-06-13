@@ -1,0 +1,19 @@
+@use '../../styles/var';
+
+.cart-icon-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  p {
+    font-size: 18px;
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+    color: var.$primary-color;
+  }
+}
+
+.cart-icon {
+  color: var.$background-color;
+}

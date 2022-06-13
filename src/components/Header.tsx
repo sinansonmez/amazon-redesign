@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { MdAddShoppingCart } from "react-icons/md";
-import { Context } from "../Context";
+import CartIcon from "./CartIcon/CartIcon";
 import Menu from "./DropdownMenu/Menu";
 
 const Header = () => {
-  const { cartItems } = useContext(Context);
   return (
     <header>
       <Link to="/">
@@ -20,9 +18,7 @@ const Header = () => {
         className="rounded-avatar-small"
         src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
       />
-      <Link to="/cart">
-        <MdAddShoppingCart size="1.5em" />
-      </Link>
+      <CartIcon />
     </header>
   );
 };
