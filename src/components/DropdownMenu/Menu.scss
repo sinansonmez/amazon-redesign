@@ -38,9 +38,22 @@
     cursor: pointer;
     width: 100%;
     text-align: left;
-    padding: 0.7rem 1rem;
+    padding: 0 1rem;
   }
 
+}
+
+.menu-items__title {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.menu-items__subtitle {
+  font-size: 14px;
+  text-align: left;
+  margin: 0;
+  padding: 0 1rem;
 }
 
 .arrow::after {

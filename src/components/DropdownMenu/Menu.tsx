@@ -15,7 +15,7 @@ const Menu = () => {
     <div className="menu-container">
       <GiHamburgerMenu />
       <ul className="menus">
-        <MenuItems title={"Select Category"} items={menuItems} />
+        <MenuItems title={"Category"} items={menuItems} />
       </ul>
       <MdKeyboardArrowDown size='1.5em' />
     </div>
