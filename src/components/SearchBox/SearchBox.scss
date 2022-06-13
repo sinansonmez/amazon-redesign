@@ -1,0 +1,31 @@
+@use '../../styles/var';
+
+.search-box-container {
+  display: flex;
+  align-items: center;
+  height: auto;
+  width: 50%;
+
+  input {
+    padding: 0.5rem 1rem;
+    border-radius: 4px 0 0 4px;
+    border: none;
+    width: 70%;
+    height: auto;
+    background-color: var.$background-color;
+    color: var.$text-color;
+    font-size: 12px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    background-color: var.$primary-color;
+    border-radius: 0 4px 4px 0;
+    border: none;
+    padding: 0;
+  }
+
+}
