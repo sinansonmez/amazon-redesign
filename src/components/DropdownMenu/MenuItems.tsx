@@ -4,10 +4,11 @@ import "./Menu.scss";
 
 type Props = {
   title: string;
+  subtitle: string;
   items: { title: string }[];
 };
 
-const MenuItems = ({ title, items }: Props) => {
+const MenuItems = ({ title, subtitle, items }: Props) => {
   const [dropdown, setDropdown] = useState(false);
   let ref = useRef<HTMLLIElement>(null);
 
@@ -28,7 +29,7 @@ const MenuItems = ({ title, items }: Props) => {
 
   return (
     <li className="menu-items" ref={ref} >
-      <p className="menu-items__subtitle" >Select</p>
+      <p className="menu-items__subtitle" >{subtitle}</p>
       <button
         type="button"
         className="menu-items__title"
